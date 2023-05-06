@@ -17,5 +17,5 @@
     "exports": "./index.js",
     "engines": {
         "node": ">=14.16"
-    },
+    }
 }
