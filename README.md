@@ -13,7 +13,8 @@ Logging module.
 
 ### Install
 
-NOTE: this package uses Chalk for terminal colors. Since Chalk is ESM, this package is also ESM; Read more [here](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c). This script can automate the conversion [link](https://github.com/dezchai/CommonJsToEsm).
+NOTE: this package uses Chalk for terminal colors, which means this package will not work in commonjs; Read more [here](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+This script can [automate the conversion](https://github.com/dezchai/CommonJsToEsm).
 
 ```console
 npm install dezutil
@@ -35,7 +36,7 @@ The default behaviour is to add a timestamp to each log statement.
 [2023-05-05 17:36:52.353] Hello, World!
 ```
 
-You can change this by provinding an prefix object as the first parameter.
+You can change this by providing a prefix string as the first parameter.
 
 ```js
 import Log from 'dezutil'
@@ -54,7 +55,7 @@ You can also destructure the logger into 3 functions, log(), slog(), and elog().
 ```js
 import Log from 'dezutil'
 
-const { log, elog, slog } = new Log('INFO').create()
+const { log, elog, slog } = Log.create('INFO')
 
 log('Hello, World!')
 ```
