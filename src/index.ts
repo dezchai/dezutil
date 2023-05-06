@@ -1,76 +1,84 @@
-import chalk, { ForegroundColorName, BackgroundColorName } from "chalk";
+import chalk, { ForegroundColorName, BackgroundColorName } from 'chalk'
 
-export class Log {
-  prefix?: string;
+export default class Log {
+  prefix?: string
+
   constructor(prefix?: string) {
-    if (prefix) this.prefix = prefix;
+    if (prefix) this.prefix = prefix
   }
+
+  /**
+   * Prints formatted log messages to the console with an optional prefix.
+   *
+   * @param {ForegroundColorName | BackgroundColorName} color - The color to use for the log message.
+   * @param {...any[]} args - The arguments to log.
+   */
   printlog(color: ForegroundColorName | BackgroundColorName, ...args: any[]) {
-    args = args.map((arg) => {
+    const formattedArgs = args.map((arg: any) => {
       if (arg instanceof Error) {
-        return arg.stack || arg.message;
-      } else if (typeof arg === "object") {
-        return JSON.stringify(arg);
-      } else {
-        return arg;
+        return arg.stack || arg.message
+      } else if (typeof arg === 'object') {
+        return JSON.stringify(arg)
       }
-    });
-    const date = new Date();
+
+      return arg
+    })
+
+    const date = new Date()
     const formattedDate =
-      "[" +
-      `${date.getFullYear()}-${(date.getMonth() + 1)
-        .toString()
-        .padStart(2, "0")}-${date
+      '[' +
+      `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date
         .getDate()
         .toString()
         .padStart(
           2,
-          "0"
+          '0'
         )} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}` +
-      "]";
+      ']'
+
     if (this.prefix) {
       console.log(
         chalk.yellow(formattedDate),
         chalk.magenta(this.prefix),
-        chalk[color](...args)
-      );
+        chalk[color](...formattedArgs)
+      )
     } else {
-      console.log(chalk.yellow(formattedDate), chalk[color](...args));
+      console.log(chalk.yellow(formattedDate), chalk[color](...formattedArgs))
     }
   }
+
   // regular log
   log(...args: any[]) {
-    this.printlog("cyan", ...args);
+    this.printlog('cyan', ...args)
   }
+
   // error log
   elog(...args: any[]) {
-    this.printlog("red", ...args);
+    this.printlog('red', ...args)
   }
+
   // success log
   slog(...args: any[]) {
-    this.printlog("green", ...args);
-  }
-  getLogger() {
-    return (...args: any[]) => this.log(...args);
-  }
-  getErrorLogger() {
-    return (...args: any[]) => this.elog(...args);
-  }
-  getSuccessLogger() {
-    return (...args: any[]) => this.slog(...args);
+    this.printlog('green', ...args)
   }
 
   static create(prefix?: string) {
-    const logger = new Log(prefix);
-    return [
-      logger.getLogger(),
-      logger.getErrorLogger(),
-      logger.getSuccessLogger(),
-    ];
+    const logger = new Log(prefix)
+    return {
+      log: (...args: any[]) => logger.log(...args),
+      elog: (...args: any[]) => logger.elog(...args),
+      slog: (...args: any[]) => logger.slog(...args)
+    }
   }
 }
 
-let l = new Log();
+const l = new Log()
+
+/**
+ * Logs the given arguments to the console.
+ *
+ * @param {...any} args - The arguments to log.
+ */
 export const log = (...args: any[]) => {
-  l.log(...args);
-};
+  l.log(...args)
+}
