@@ -13,6 +13,8 @@ Logging module.
 
 ### Install
 
+NOTE: this package uses Chalk for terminal colors. Since Chalk is ESM, this package is also ESM; Read more [here](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c). This script can automate the conversion [link](https://github.com/dezchai/CommonJsToEsm).
+
 ```console
 npm install dezutil
 ```
