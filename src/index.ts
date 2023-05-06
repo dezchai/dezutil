@@ -38,7 +38,7 @@ export default class Log {
     if (this.prefix) {
       console.log(
         chalk.yellow(formattedDate),
-        chalk.magenta(this.prefix),
+        chalk.magenta(`[${this.prefix}]`),
         chalk[color](...formattedArgs)
       )
     } else {
