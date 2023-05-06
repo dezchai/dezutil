@@ -17,5 +17,9 @@
     "exports": "./index.js",
     "engines": {
         "node": ">=14.16"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dezchai/dezutil.git"
     }
 }
