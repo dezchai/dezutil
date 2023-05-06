@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": [
+      "es2020"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "node16",
+    "isolatedModules": true,
+    "noPropertyAccessFromIndexSignature": true
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "esm": true,
+    "experimentalResolver": true
+  }
+}
