@@ -25,18 +25,15 @@ export default class Log {
     })
 
     const date = new Date()
-    const formattedDate =
-      '[' +
-      `${date.getFullYear()}-${(date.getMonth() + 1)
-        .toString()
-        .padStart(2, '0')}-${date
-        .getDate()
-        .toString()
-        .padStart(
-          2,
-          '0'
-        )} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}` +
-      ']'
+    const formattedDate = `[${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date
+      .getHours()
+      .toString()
+      .padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date
+      .getSeconds()
+      .toString()
+      .padStart(2, '0')}.${date.getMilliseconds().toString().padStart(3, '0')}]`
 
     if (this.prefix) {
       console.log(
