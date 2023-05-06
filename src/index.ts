@@ -70,7 +70,7 @@ export class Log {
   }
 }
 
-let l = new Log();
+const l = new Log();
 export const log = (...args: any[]) => {
   l.log(...args);
 };
