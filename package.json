@@ -1,6 +1,6 @@
 {
     "name": "dezutil",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Nice helper functions",
     "main":"lib/index.js",
     "types": "lib/index.d.ts",
@@ -14,7 +14,7 @@
         "chalk": "^5.2.0"
     },
     "type": "module",
-    "exports": "./index.js",
+    "exports": "./lib/index.js",
     "engines": {
         "node": ">=14.16"
     },

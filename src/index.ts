@@ -27,7 +27,9 @@ export default class Log {
     const date = new Date()
     const formattedDate =
       '[' +
-      `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date
+      `${date.getFullYear()}-${(date.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${date
         .getDate()
         .toString()
         .padStart(
@@ -67,7 +69,7 @@ export default class Log {
     return {
       log: (...args: any[]) => logger.log(...args),
       elog: (...args: any[]) => logger.elog(...args),
-      slog: (...args: any[]) => logger.slog(...args)
+      slog: (...args: any[]) => logger.slog(...args),
     }
   }
 }
