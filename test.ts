@@ -1,4 +1,4 @@
-import { Log } from "./index.js";
+import { Log } from "./src/index.js";
 
 const [log, elog, slog] = Log.create();
 log("1234");

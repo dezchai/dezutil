@@ -1,11 +1,11 @@
-import chalk from "chalk";
+import chalk, { ForegroundColorName, BackgroundColorName } from "chalk";
 
 export class Log {
   prefix?: string;
   constructor(prefix?: string) {
     if (prefix) this.prefix = prefix;
   }
-  printlog(color: string, ...args: any[]) {
+  printlog(color: ForegroundColorName | BackgroundColorName, ...args: any[]) {
     args = args.map((arg) => {
       if (arg instanceof Error) {
         return arg.stack || arg.message;
@@ -35,7 +35,7 @@ export class Log {
         chalk[color](...args)
       );
     } else {
-      console.log(chalk.yellow(formattedDate), chalk.cyan(...args));
+      console.log(chalk.yellow(formattedDate), chalk[color](...args));
     }
   }
   // regular log

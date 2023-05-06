@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "lib": [
-      "es2020"
-    ],
+    "lib": ["es2020"],
+    "outDir": "./lib",
+    "strict": true,
     "module": "ESNext",
     "moduleResolution": "node16",
     "isolatedModules": true,
+    "declaration": true,
     "noPropertyAccessFromIndexSignature": true
   },
   "ts-node": {
@@ -14,5 +15,7 @@
     "files": true,
     "esm": true,
     "experimentalResolver": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
