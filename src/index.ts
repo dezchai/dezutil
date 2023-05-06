@@ -1,6 +1,6 @@
 import chalk, { ForegroundColorName, BackgroundColorName } from 'chalk'
 
-export class Log {
+export default class Log {
   prefix?: string
 
   constructor(prefix?: string) {
