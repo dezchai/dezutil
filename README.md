@@ -75,3 +75,6 @@ log('Hello, World!')
 ```terminal
 [2023-05-05 17:36:52.353] Hello, World!
 ```
+
+## License
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
